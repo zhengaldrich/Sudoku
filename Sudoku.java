@@ -1,5 +1,5 @@
 import java.util.*;
-public class Main {
+public class Sudoku {
     public static Scanner sc = new Scanner(System.in);
     public static int[][] board = new int[9][9];
     public static void main(String[] args) {
