@@ -8,25 +8,35 @@ public class Main {
         removeRandom();
         printBoard();
         while (!win()) {
-            System.out.println("____________________");
-            System.out.println("Enter a valid row index: ");
-            int userRow = sc.nextInt();
-            System.out.println("Enter a valid column index: ");
-            int userCol = sc.nextInt();
-            System.out.println("Enter your guess: ");
-            int guess = sc.nextInt();
-            if ((userRow < 9 && userRow >= 0) &&
-                (userCol < 9 && userCol >= 0) &&
-                (board[userRow][userCol] == 0 && isValid(userRow, userCol, guess))) {
-                    board[userRow][userCol] = guess;
+            System.out.println("Enter 1 to continue, enter 2 to quit");
+            int userChoice = sc.nextInt();
+            if (userChoice == 1) {
+                System.out.println("____________________");
+                System.out.println("Enter a valid row index: ");
+                int userRow = sc.nextInt();
+                System.out.println("Enter a valid column index: ");
+                int userCol = sc.nextInt();
+                System.out.println("Enter your guess: ");
+                int guess = sc.nextInt();
+                if ((userRow < 9 && userRow >= 0) &&
+                    (userCol < 9 && userCol >= 0) &&
+                    (board[userRow][userCol] == 0 && isValid(userRow, userCol, guess))) {
+                        board[userRow][userCol] = guess;
+                        printBoard();
+                    }
+                else {
+                    System.out.println("Try again!");
                     printBoard();
-                }
-            else {
-                System.out.println("Try again!");
-                printBoard();
+                } 
             }
+            if (userChoice == 2) {
+                System.out.println("You quit!");
+                break;
+            }
+            else System.out.println("That's not a valid input!");
         }
-        System.out.println("You win!!");
+        if (win()) System.out.println("You win!!"); 
+        else System.out.println("Bai!");
     }
     
     public static boolean win() {
@@ -63,8 +73,8 @@ public class Main {
                 
                 if (board[i][j] == 0) {
                     System.out.print("- ");
-                    continue;
-                }
+                    continue; 
+                } 
                 
                 System.out.print(board[i][j] + " ");
             }
